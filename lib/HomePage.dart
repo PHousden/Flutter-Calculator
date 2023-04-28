@@ -43,10 +43,16 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+
+        },
         backgroundColor: Color.fromRGBO(136, 45, 23, 100),
         child: Icon(Icons.add,color: Colors.white,),
       ),
     );
   }
+}
+
+void addToDo() {
+
 }
