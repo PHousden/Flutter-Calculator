@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<ToDoItem> _todoItems = [];
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,23 +38,13 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                Column(
-                  children: _todoItems,
-                ),
+                ToDoItem(),
               ],
             ),
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _todoItems.add(const ToDoItem());
-          });
-        },
-        backgroundColor: const Color.fromRGBO(136, 45, 23, 100),
-        child: const Icon(Icons.add,color: Colors.white,),
-      ),
     );
   }
 }
+
