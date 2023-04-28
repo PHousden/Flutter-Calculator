@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                   margin: EdgeInsets.all(20),
                   child: ListTile(
                       leading:
-                          const Text("ToDo", style: TextStyle(fontSize: 20)),
+                      const Text("ToDo", style: TextStyle(fontSize: 20)),
                       onTap: () {},
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
@@ -74,8 +74,8 @@ class _HomePageState extends State<HomePage> {
             _todoItems.add(ToDoItem());
           });
         },
-        backgroundColor: Color.fromRGBO(136, 45, 23, 100),
-        child: Icon(
+        backgroundColor: const Color.fromRGBO(136, 45, 23, 100),
+        child: const Icon(
           Icons.add,
           color: Colors.white,
         ),
