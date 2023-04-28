@@ -9,6 +9,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<ToDoItem> _todoItems = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +21,7 @@ class _HomePageState extends State<HomePage> {
         // make them stay in the middle
         centerTitle: true,
         // set background colour
-        backgroundColor: Color.fromRGBO(204, 119, 34, 100),
+        backgroundColor: const Color.fromRGBO(204, 119, 34, 100),
       ),
       body: Column(
         children: [
@@ -36,7 +38,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                ToDoItem(),
+                Column(
+                  children: _todoItems,
+                ),
               ],
             ),
           ),
@@ -44,15 +48,13 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-
+          setState(() {
+            _todoItems.add(const ToDoItem());
+          });
         },
-        backgroundColor: Color.fromRGBO(136, 45, 23, 100),
-        child: Icon(Icons.add,color: Colors.white,),
+        backgroundColor: const Color.fromRGBO(136, 45, 23, 100),
+        child: const Icon(Icons.add,color: Colors.white,),
       ),
     );
   }
-}
-
-void addToDo() {
-
 }
