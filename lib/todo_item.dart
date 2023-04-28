@@ -23,7 +23,7 @@ class ToDoItem extends StatelessWidget {
             shape: BoxShape.circle,
             color: Colors.grey[300],
           ),
-          child: IconButton(onPressed: () {}, icon: const Icon(Icons.delete))
+          child: IconButton(onPressed: () {}, icon: const Icon(Icons.delete, color: Colors.red,))
         )
       ),
     );
