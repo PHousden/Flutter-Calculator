@@ -38,8 +38,30 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                Column(
-                  children: _todoItems,
+                Container(
+                  margin: EdgeInsets.all(20),
+                  child: ListTile(
+                      leading:
+                          const Text("ToDo", style: TextStyle(fontSize: 20)),
+                      onTap: () {},
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 5),
+                      tileColor: const Color.fromRGBO(204, 119, 34, 100),
+                      trailing: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.grey[300],
+                          ),
+                          child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              )))),
                 ),
               ],
             ),
@@ -53,7 +75,10 @@ class _HomePageState extends State<HomePage> {
           });
         },
         backgroundColor: Color.fromRGBO(136, 45, 23, 100),
-        child: Icon(Icons.add,color: Colors.white,),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
     );
   }
