@@ -5,6 +5,7 @@ class ToDoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO Card.
     return Container(
       margin: EdgeInsets.all(20),
       child: ListTile(
@@ -15,8 +16,17 @@ class ToDoItem extends StatelessWidget {
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         tileColor: const Color.fromRGBO(204, 119, 34, 100),
-        trailing: const Icon(Icons.delete,color: Colors.red,),
+        trailing: Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.grey[300],
+          ),
+          child: IconButton(onPressed: () {}, icon: const Icon(Icons.delete))
+        )
       ),
     );
   }
 }
+
