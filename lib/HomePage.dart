@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<ToDoItem> _todoItems = [];
+  List<ToDo> _todoItems = [];
 
   @override
   Widget build(BuildContext context) {
@@ -21,24 +21,31 @@ class _HomePageState extends State<HomePage> {
         // make them stay in the middle
         centerTitle: true,
         // set background colour
-        backgroundColor: Color.fromRGBO(204, 119, 34, 100),
+        backgroundColor: const Color.fromRGBO(204, 119, 34, 100),
       ),
       body: Column(
         children: [
+          Container(
+            alignment: Alignment.topLeft,
+            margin: const EdgeInsets.only(top: 50, bottom: 20, left: 30),
+            child: const Text(
+              'All To Do',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
           Expanded(
-            child: ListView(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 50, bottom: 20, left: 20),
-                  child: const Text(
-                    'All To Do',
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ],
+            child: ListView.builder(
+              itemCount: _todoItems.length,
+              itemBuilder: (BuildContext context, int index) {
+                final todo = _todoItems[index];
+                return ToDoItem(
+                  title: todo.title,
+                  isCompleted: todo.isCompleted,
+                );
+              },
             ),
           ),
         ],
@@ -46,7 +53,9 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            _todoItems.add(ToDoItem());
+            _todoItems.add(ToDo(
+              title: 'New To-Do Item',
+            ));
           });
         },
         backgroundColor: const Color.fromRGBO(136, 45, 23, 100),
@@ -59,18 +68,34 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+
 class ToDoItem extends StatelessWidget {
-  const ToDoItem({Key? key}) : super(key: key);
+  final String title;
+  final bool isCompleted;
+
+  const ToDoItem({
+    Key? key,
+    required this.title,
+    this.isCompleted = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       child: ListTile(
-          leading: const Text("ToDo", style: TextStyle(fontSize: 20)),
+          leading: Text(
+            title,
+            style: TextStyle(
+              fontSize: 20,
+              decoration:
+              isCompleted ? TextDecoration.lineThrough : TextDecoration.none,
+            ),
+          ),
           onTap: () {},
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           tileColor: const Color.fromRGBO(204, 119, 34, 100),
@@ -89,4 +114,14 @@ class ToDoItem extends StatelessWidget {
                   )))),
     );
   }
+}
+
+class ToDo {
+  String title;
+  bool isCompleted;
+
+  ToDo({
+    required this.title,
+    this.isCompleted = false,
+  });
 }
